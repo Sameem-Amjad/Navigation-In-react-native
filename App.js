@@ -1,6 +1,6 @@
 
 import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack'
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
 const Stack = createNativeStackNavigator();
 import Home from './screens/home';
@@ -8,6 +8,7 @@ import Login from './screens/login';
 import Details from './screens/detail';
 import MyTabs from './navigators/TopTab';
 import BottomTab from './navigators/bottomTab';
+import MyDrawer from './navigators/MyDrawer';
 function App() {
   return (
     <NavigationContainer>
@@ -36,16 +37,22 @@ function App() {
         <Stack.Screen
           name="Top Tabs"
           component={MyTabs}
-          options={props => ({title: props.route.params.name})}
+          options={{
+            headerShown:false
+          }}
         />
+        
         <Stack.Screen
           name="Bottom Tabs"
           component={BottomTab}
-          options={props => ({title: props.route.params.name})}
+          options={{
+            headerShown:false
+          }}
         />
-        
-      </Stack.Navigator> 
-     
+        <Stack.Screen name="myDrawer" component={ MyDrawer } options={ {
+          headerShown:false
+        }} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
